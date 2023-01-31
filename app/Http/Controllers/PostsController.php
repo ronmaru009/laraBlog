@@ -82,12 +82,12 @@ class PostsController extends Controller
     {
 
         $post =  Post::find($id);
-        return redirect('posts')->with('error', 'Unauthorized Page');
+        
         //Check for correct user
-        if(auth()->user()->id != $post){
-            return view('posts.edit')->with('post', $post);
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
         }
-
+        return view('posts.edit')->with('post', $post);
     }
 
     /**
@@ -125,8 +125,8 @@ class PostsController extends Controller
         $post = Post::find($id);
 
         //Check for correct user
-        if(auth()->user()->id != $post){
-            return view('posts.edit')->with('post', $post);
+        if(auth()->user()->id !== $post->user_id){
+            return redirect('/posts')->with('error', 'Unauthorized Page');
         }
 
         $post->delete();
