@@ -1,0 +1,8 @@
+#indexBg{
+    /* background-color: black; */
+    background-image: url('../images/1.jpg');
+    background-position: center;
+    background-position-y: top;
+    min-height: 100vh;
+    min-width: auto;
+}
